@@ -1,0 +1,56 @@
+
+History
+===========================
+File system
+
+DBMS - dbase
+
+RDBMS - oracle, Microsoft sql 
+
+ORDBMS - oracle, Microsoft sql 
+
+================================
+
+Schema relationship 
+
+database is considered as collection object.
+
+Table, views, procedure trigger etc..
+
+server -> collection of database
+database -> collection of object
+schema used to split the object among the user.
+
+Example :
+
+Emp table 
+==========================================
+sarvanan.emp
+valli.emp
+
+========================================
+syntax :
+
+servername.schemaname.objectname
+========================================
+
+Normalization : to reduce redundancy, to prevent loss of data. to reduce null value.
+
+========================================
+
+operation : Insert, Delete, Update 
+
+
+======================================
+Assume you have student and teacher relation in the same table.
+
+======================================
+Problem :
+when teacher inserted student portion will be empty (empty) 
+student is mapped with one teacher (duplicate)
+if teacher resigned when we delete teacher details,  it will auto delete student also.(loss of data).
+=====================================
+
+
+
+ 

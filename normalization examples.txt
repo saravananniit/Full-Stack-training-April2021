@@ -1,0 +1,68 @@
+Normalization example
+=====================
+
+Given Table : Movie rented table
+
+T1 :
+
+Full Names
+Physical Address
+Movies rented
+Salutation
+Category
+
+==============================
+
+1 NF : Each cell should have single value
+
+T1 :
+
+Full Names
+Physical Address
+Movies rented
+Salutation
+Category
+=============================
+
+2 NF : be in 1 NF, single column Primary key
+
+T1:
+
+membership_id (Pk)
+full Namess
+physical address
+salutation
+category
+
+T2:
+
+membership_id (Fk)
+moveis rented
+
+=================================
+
+3 NF : we find transitive functional dependencies between full names and salutation. if name is changed then salutation requires auto changes
+
+T1:
+
+membership_id (Pk)
+full Namess
+physical address
+salutation_id (Fk)
+category
+
+T2:
+
+membership_id (Fk)
+moveis rented
+
+T3:
+
+salutation_id (Pk)
+salutation
+
+==================================
+
+
+
+
