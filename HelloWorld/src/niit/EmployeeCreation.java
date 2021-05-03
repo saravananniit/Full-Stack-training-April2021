@@ -1,5 +1,5 @@
 package niit;
-
+//collection - list which is used ArrayList() or linkedList()
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class EmployeeCreation {
 		employees.add(e);
 		
 	}
-    public List<Employee> getEmployee()
+    public List<Employee> getEmployees()
     {
 	return employees;
     }

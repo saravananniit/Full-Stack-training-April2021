@@ -1,18 +1,15 @@
 package niit;
-
-import java.util.ArrayList;
-import java.util.List;
-
+// model class 
 public class Employee {
+		
 	
-	
-
 	public Employee(int eno, String name, int sal) {
 		super();
 		this.eno = eno;
 		this.name = name;
-		this.sal=sal;
+		this.sal = sal;
 	}
+	
 	private int eno;
 	public int getEno() {
 		return eno;
@@ -23,9 +20,10 @@ public class Employee {
 	public int getSal() {
 		return sal;
 	}
+
 	private String name;
 	private int sal;
-	
 
+	
 
 }
