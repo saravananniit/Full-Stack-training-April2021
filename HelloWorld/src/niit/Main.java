@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.stream.*;
 public class Main {
 public static void main(String[] args) {
-
+Employee e6=new Employee(15,"Valli",9000);
 Employee e1=new Employee(13,"sam",8000);
 Employee e2=new Employee(12,"som",2000);
 Employee e3=new Employee(11,"ram",1000);
