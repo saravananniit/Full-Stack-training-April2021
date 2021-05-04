@@ -1,0 +1,48 @@
+What are threads?
+Threads are a virtual CPU.
+
+The three parts of at thread are:
+• CPU
+• Code
+• Data
+
+=========================================
+Class HelloRunner is a user defined java class
+
+keyword 
+
+implements interface name -> extending the interface
+
+methods should be defined 
+
+interface name ->Runnable
+interface method ->run() defined
+
+how many threads are there in this code
+
+1. main thread is a default
+2. child thread
+
+when ever we create a thread it is always
+child thread
+
+public class ThreadTester {
+ public static void main(String args[]) {
+ HelloRunner r = new HelloRunner();
+ Thread t = new Thread(r);
+ t.start();
+ }
+ }
+ class HelloRunner implements Runnable {
+ int i;
+ public void run() {
+ i = 0;
+ while (true) {
+ System.out.println("Hello " + i++);
+ if ( i == 50 ) {
+ break;
+ }
+ }
+ }
+ }
+========================================
