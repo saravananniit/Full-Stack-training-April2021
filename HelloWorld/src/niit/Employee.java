@@ -10,7 +10,16 @@ public class Employee {
 		this.sal = sal;
 	}
 	
+	@Override
+	public String toString() {
+		return "Employee [eno=" + eno + ", name=" + name + ", sal=" + sal + "]";
+	}
+
 	private int eno;
+	private String name;
+	private int sal;
+
+	
 	public int getEno() {
 		return eno;
 	}
@@ -21,9 +30,7 @@ public class Employee {
 		return sal;
 	}
 
-	private String name;
-	private int sal;
-
+	
 	
 
 }
