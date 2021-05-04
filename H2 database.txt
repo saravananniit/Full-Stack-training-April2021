@@ -1,0 +1,11 @@
+http://www.h2database.com/html/download.html
+
+Post intall :
+
+file:///C:/Program%20Files%20(x86)/H2/docs/html/main.html
+
+click quick start
+
+https://www.java.com/en/download/manual.jsp
+
+https://docs.oracle.com/javase/tutorial/essential/environment/paths.html
