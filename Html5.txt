@@ -1,0 +1,4 @@
+https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
+https://www.w3schools.com/html/html_form_attributes.asp
+https://en.wikipedia.org/wiki/HTML
+https://html.spec.whatwg.org/

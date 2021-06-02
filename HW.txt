@@ -1,0 +1,20 @@
+====================
+TDD
+=====================
+Coding -> Testing (progressive based testing) - Junit
+====================
+BDD   (home work)
+=====================
+      (home work)
+Writing test cases the source code will develop automatically
+===================
+Java is tech.
+
+Imperative programming
+Declarative programming
+functional programming
+====================
+user defined annotation - Java example.
+
+======================
+

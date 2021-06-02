@@ -1,0 +1,7 @@
+bank project
+
+Functional requirement : Transfer, deposit
+
+Clinet side -> Performance
+Non functional requirement : Security, reliability, time, speed, response time.
+

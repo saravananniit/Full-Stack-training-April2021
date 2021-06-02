@@ -1,0 +1,87 @@
+<html>
+ <head><title>My Page</title></head>
+ <body>
+ <%! int count = 0; %>
+ <H1>Welcome to my page.</H1>
+ <% count++; %>
+ You are my <%= count %> visitor.
+ </BODY>
+ </HTML>
+
+public class JSPGeneratedServlet extends HTTPServlet {
+ int count = 0; // declaration creates member
+
+ public void service(. . .) {
+ // Code to create HTML here
+
+ count++; // scriplet added to service
+
+ // More code to create next HTML
+
+ out.println(count);// addition from expression to output
+
+ // End of HTML
+ }
+ }
+
+ <!--
+ Number Guess Game
+ Based on the JavaServer Page Written by Saravanan P
+
+ -->
+
+ <html>
+ <head><title>Number Guess</title></head>
+ <body>
+ <%@ page import = "java.util.*" %>
+
+ <%! int answer = 0; %>
+ <%! int numGuesses=0; %>
+
+ <% String guess = request.getParameter("guess");
+
+ if(guess == null) { %>
+
+ Welcome to the Number Guess game.<p>
+ <% answer = Math.abs(new Random().nextInt() % 100) + 1;
+ numGuesses = 0;
+
+ } else {
+
+ int value = Integer.parseInt(guess);
+
+ if(value == answer) { %>
+
+ Congratulations! You got it.<br>
+ And after just <%= numGuesses %> tries.<p>
+
+ Care to <a href="ngScriplet.jsp">try again</a>?<p>
+
+ <% } else { %>
+
+ Good guess, but nope. Try
+
+ <% numGuesses++;
+
+ if(value < answer) { %>
+
+ <b>higher</b>.<p>
+
+ <% } else if(value > answer) { %>
+
+ <b>lower</b>.<p>
+
+ <% }
+
+ }
+
+ } %>
+ I’m thinking of a number between 1 and 100.<p>
+
+ <form method=get>
+ What’s your guess? <input type=text name=guess>
+ <input type=submit value="Submit">
+ </form>
+
+ </body>
+ </html>
