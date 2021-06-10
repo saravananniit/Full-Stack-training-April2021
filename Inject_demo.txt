@@ -1,0 +1,118 @@
+
+Create a maven project, select quick start archetype.
+
+give proper name for group id and artifact id
+
+set jdk version to 8
+
+add proper dependency to pom.xml to download Spring 5 jar
+
+<dependency>
+  	<groupId>org.springframework</groupId>
+  	<artifactId>spring-core</artifactId>
+  	<version>5.0.5.RELEASE</version>
+  </dependency>
+  <dependency>
+  	<groupId>org.springframework</groupId>
+  	<artifactId>spring-beans</artifactId>
+  	<version>5.0.5.RELEASE</version>
+  </dependency>
+  <dependency>
+  	<groupId>org.springframework</groupId>
+  	<artifactId>spring-context</artifactId>
+  	<version>5.0.5.RELEASE</version>
+  </dependency>
+  <dependency>
+  	<groupId>junit</groupId>
+  	<artifactId>junit</artifactId>
+  	<version>4.12</version>
+  </dependency>
+  
+
+--------------------------------------------------------
+
+package com.suzuki.SampleInjectDemo;
+
+public interface 	 {
+
+public String getWriter();
+	
+}
+
+-----------------------
+
+package com.suzuki.SampleInjectDemo;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class CallWriter implements Writer{
+
+	
+
+	public String getWriter() {
+		// TODO Auto-generated method stub
+		return "i am here yes tell me";
+	}
+
+}
+
+-------------------------
+
+package config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.suzuki.SampleInjectDemo.*;
+@Configuration
+@ComponentScan(basePackages="com.suzuki")
+public class AppConfig {
+
+	@Autowired(required=true)
+	CallWriter callWriter;  //DI 
+	
+	
+	@Bean(name="dataSource")
+	public String dataSource() {
+				
+		return callWriter.getWriter();
+	}
+}
+
+
+	
+
+--------------------
+
+package com.suzuki.SampleInjectDemo;
+
+
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
+
+
+
+import config.AppConfig;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+       // System.out.println( "Hello World!" );
+    	 AbstractApplicationContext ctx=new   
+    			 AnnotationConfigApplicationContext(AppConfig.class);
+    	String  h= (String)ctx.getBean("dataSource");
+    	System.out.println(h);
+    	
+    
+      
+    }
+}
+
