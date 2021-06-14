@@ -1,0 +1,208 @@
+1.
+
+Spring MVC 
+
+create a Maven project 
+
+select archetype webapp
+
+group id
+artifact id
+ver
+pacakage
+
+-----------------------------------------
+2.
+
+JDK 8 
+
+Add proper Maven dependency at pom.xml
+
+<dependency> 
+     <groupId>org.springframework</groupId> 
+     <artifactId>spring-core</artifactId> 
+     <version>5.0.5.RELEASE</version> 
+ </dependency> 
+     <!-- https://mvnrepository.com/artifact/org.springframework/spring-web --> 
+ <dependency> 
+     <groupId>org.springframework</groupId> 
+     <artifactId>spring-web</artifactId> 
+     <version>5.0.5.RELEASE</version> 
+ </dependency> 
+     <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --> 
+ <dependency> 
+     <groupId>org.springframework</groupId> 
+     <artifactId>spring-webmvc</artifactId> 
+     <version>5.0.5.RELEASE</version> 
+ </dependency> 
+  <dependency>
+  	<groupId>junit</groupId>
+  	<artifactId>junit</artifactId>
+  	<version>4.12</version>
+  </dependency>
+    
+-------------------------------------------------
+3. set the target runtime to server
+
+-----------------------------------------
+4. create a java folder under src/main if required only
+
+src/main/java
+
+---------------------------------------------------
+5. package com.niit.springwebexample.domain;
+
+	public interface HelloWorld {
+
+		public String sayHello();
+	}
+-------------------------------------------
+6. 
+package com.niit.springwebexample.domain;
+	
+	import org.springframework.stereotype.Component;
+	
+        @Component("helloWorld")
+	public class HelloWorldImpl implements HelloWorld{
+	
+        public String sayHello() {
+	return "HelloWorld";
+	}
+	
+	}
+
+---------------------------------------------
+7. 
+
+package com.niit.springwebexample.controller;
+	
+
+	import org.springframework.beans.factory.annotation.Autowired;
+	import org.springframework.stereotype.Controller;
+	import org.springframework.ui.Model;
+	import org.springframework.web.bind.annotation.GetMapping;
+	import org.springframework.web.bind.annotation.RequestMapping;
+	import org.springframework.web.bind.annotation.RequestMethod;
+	
+	import com.niit.springwebexample.domain.HelloWorld;
+	
+	@Controller
+	public class HelloController {
+	
+
+		@Autowired
+		private HelloWorld helloWorld; //DI
+		
+		
+		@GetMapping("/")
+		public String hello(Model model) {
+		
+        	model.addAttribute("hello", helloWorld.sayHello());
+		
+                return "index";  // logical name for output is index
+
+		// model here is used for preparing the data
+                 }
+		// every method is mapped to one url
+	}
+
+-----------------------------------------------------
+
+
+8.
+
+
+
+config :-> 2 files.
+
+
+package com.niit.springwebexample.config;
+	
+
+	import org.springframework.context.annotation.Bean;
+	import org.springframework.context.annotation.ComponentScan;
+	import org.springframework.context.annotation.Configuration;
+	import org.springframework.web.servlet.ViewResolver;
+	import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+	import org.springframework.web.servlet.view.InternalResourceViewResolver;
+	
+
+	import com.niit.springwebexample.domain.HelloWorld;
+	import com.niit.springwebexample.domain.HelloWorldImpl;
+	
+
+	@Configuration
+	@EnableWebMvc
+	@ComponentScan(basePackages="com.niit")
+	public class AppConfig {
+		
+		@Bean(name="viewResolver")
+		public ViewResolver getViewResolver() {
+			InternalResourceViewResolver viewResolver=new                         InternalResourceViewResolver();
+			viewResolver.setPrefix("/WEB-INF/views/");
+			viewResolver.setSuffix(".jsp");
+			
+			return viewResolver;
+			
+		}
+	
+
+	}
+
+----------------------------------------------------
+
+package com.niit.springwebexample.config;
+	
+
+	import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+	
+
+	public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
+	
+
+		@Override
+		protected Class<?>[] getRootConfigClasses() {
+			// TODO Auto-generated method stub
+			return new Class[] {AppConfig.class};
+		}
+	
+
+		@Override
+		protected Class<?>[] getServletConfigClasses() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	
+
+		@Override
+		protected String[] getServletMappings() {
+			// TODO Auto-generated method stub
+			return new String[] {"/"};
+		}
+	
+
+	}
+
+
+-----------------------------------------------
+
+
+9.
+
+Web-inf/views/
+
+index.jsp
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"   isELIgnored="false" %>
+<%@ page session="false"%>
+<html>
+<body>
+<h2>Hello World!</h2>
+<h2>${hello}</h2>
+</body>
+</html>
+
+----------------------------------------------------
+
